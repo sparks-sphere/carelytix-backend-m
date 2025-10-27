@@ -42,6 +42,7 @@ export const createSalon = async (
         name: "Main Branch",
         saloonId: salon.id,
         branchCode: "main",
+        type: "main",
       },
     });
 
@@ -66,6 +67,7 @@ export const getAllSalons = async (
 
     const salons = await prisma.saloon.findMany({
       where: { ownerId },
+      include: { branches: true },
     });
 
     if (!salons || salons.length === 0) {
@@ -94,6 +96,7 @@ export const getSalonById = async (
     const salonId = req.params.id;
     const salon = await prisma.saloon.findFirst({
       where: { id: salonId, ownerId },
+      include: { branches: true },
     });
 
     if (!salon) {
