@@ -8,6 +8,7 @@ import authRouter from "./routes/auth.router";
 import salonRouter from "./routes/salon.router";
 import branchRouter from "./routes/branch.router";
 import staffRouter from "./routes/staff.router";
+import serviceRouter from "./routes/service.routes";
 
 const app = express();
 dotenv.config();
@@ -48,6 +49,7 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/salon", salonRouter);
 app.use("/api/v1/branch", branchRouter);
 app.use("/api/v1/staff", staffRouter);
+app.use("/api/v1/service", serviceRouter);
 
 // app.use("/api/v1/user");
 // app.use("/api/v1/admin");
