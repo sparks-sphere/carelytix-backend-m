@@ -7,6 +7,7 @@ import { errorMiddleware } from "./utils/error-handler/error-handler-middleware.
 import authRouter from "./routes/auth.router.js";
 import salonRouter from "./routes/salon.router.js";
 import branchRouter from "./routes/branch.router.js";
+import staffRouter from "./routes/staff.router.js";
 
 const app = express();
 dotenv.config();
@@ -46,6 +47,7 @@ app.get("/api/v1/health", (req, res) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/salon", salonRouter);
 app.use("/api/v1/branch", branchRouter);
+app.use("/api/v1/staff", staffRouter);
 
 // app.use("/api/v1/user");
 // app.use("/api/v1/admin");
