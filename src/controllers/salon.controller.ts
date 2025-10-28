@@ -5,7 +5,7 @@ import {
   ValidationError,
 } from "../utils/error-handler/app-error.js";
 import { ApiResponse } from "../utils/lib/responce/api-response.js";
-import prisma from "src/db/prisma.js";
+import prisma from "../db/prisma.js";
 
 export const createSalon = async (
   req: Request,
