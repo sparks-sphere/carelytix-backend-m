@@ -6,8 +6,8 @@ import {
   loginUser,
   logoutUser,
   getUser,
-} from "../controllers/auth.controller.js";
-import { isAuthenticated } from "../middlewares/auth/isAuthenticated.js";
+} from "../controllers/auth.controller";
+import { isAuthenticated } from "../middlewares/auth/isAuthenticated";
 
 const router: Router = express.Router();
 

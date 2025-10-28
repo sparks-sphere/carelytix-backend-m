@@ -2,10 +2,10 @@ import { NextFunction, Request, Response } from "express";
 import {
   NotFoundError,
   ValidationError,
-} from "../utils/error-handler/app-error.js";
-import prisma from "../db/prisma.js";
-import { ApiResponse } from "../utils/lib/responce/api-response.js";
-import { createStaffSchema, updateStaffSchema } from "../utils/schema.js";
+} from "../utils/error-handler/app-error";
+import prisma from "../db/prisma";
+import { ApiResponse } from "../utils/lib/responce/api-response";
+import { createStaffSchema, updateStaffSchema } from "../utils/schema";
 
 export const createStaff = async (
   req: Request,

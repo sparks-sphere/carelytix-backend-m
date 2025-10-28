@@ -1,1 +1,1 @@
-export * from "./schemas/mail.zod.js";
+export * from "./schemas/mail.zod";

@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from "express";
-import { salonCreationSchema, salonUpdationSchema } from "../utils/schema.js";
+import { salonCreationSchema, salonUpdationSchema } from "../utils/schema";
 import {
   NotFoundError,
   ValidationError,
-} from "../utils/error-handler/app-error.js";
-import { ApiResponse } from "../utils/lib/responce/api-response.js";
-import prisma from "../db/prisma.js";
+} from "../utils/error-handler/app-error";
+import { ApiResponse } from "../utils/lib/responce/api-response";
+import prisma from "../db/prisma";
 
 export const createSalon = async (
   req: Request,

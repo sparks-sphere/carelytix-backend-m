@@ -1,12 +1,12 @@
 import express, { Router } from "express";
-import { isAuthenticated } from "../middlewares/auth/index.js";
+import { isAuthenticated } from "../middlewares/auth/index";
 import {
   createStaff,
   deleteStaff,
   getAllStaff,
   getStaffById,
   updateStaff,
-} from "../controllers/staff.controller.js";
+} from "../controllers/staff.controller";
 
 const router: Router = express.Router();
 

@@ -1,17 +1,14 @@
 import { NextFunction, Request, Response } from "express";
-import { loginSchema, registerSchema } from "../utils/schema.js";
+import { loginSchema, registerSchema } from "../utils/schema";
 import { ZodError } from "zod";
 import bcrypt from "bcryptjs";
 
-import { setCookie } from "../utils/cookies/setCookie.js";
-import { generateTokens, refreshAuthToken } from "../utils/token.js";
-import { validateData } from "../utils/lib/validation/validate-data.js";
-import {
-  AuthError,
-  ValidationError,
-} from "../utils/error-handler/app-error.js";
-import prisma from "../db/prisma.js";
-import { ApiResponse } from "../utils/lib/responce/api-response.js";
+import { setCookie } from "../utils/cookies/setCookie";
+import { generateTokens, refreshAuthToken } from "../utils/token";
+import { validateData } from "../utils/lib/validation/validate-data";
+import { AuthError, ValidationError } from "../utils/error-handler/app-error";
+import prisma from "../db/prisma";
+import { ApiResponse } from "../utils/lib/responce/api-response";
 export const userRegistration = async (
   req: Request,
   res: Response,

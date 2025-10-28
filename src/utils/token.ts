@@ -1,6 +1,6 @@
 import jwt, { SignOptions } from "jsonwebtoken";
-import prisma from "../db/prisma.js";
-import { AuthError } from "./error-handler/app-error.js";
+import prisma from "../db/prisma";
+import { AuthError } from "./error-handler/app-error";
 
 interface GenerateTokensInput {
   id: string;

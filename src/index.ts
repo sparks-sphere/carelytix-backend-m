@@ -3,11 +3,11 @@ import cors from "cors";
 import rateLimit, { ipKeyGenerator } from "express-rate-limit";
 import cookiParser from "cookie-parser";
 import dotenv from "dotenv";
-import { errorMiddleware } from "./utils/error-handler/error-handler-middleware.js";
-import authRouter from "./routes/auth.router.js";
-import salonRouter from "./routes/salon.router.js";
-import branchRouter from "./routes/branch.router.js";
-import staffRouter from "./routes/staff.router.js";
+import { errorMiddleware } from "./utils/error-handler/error-handler-middleware";
+import authRouter from "./routes/auth.router";
+import salonRouter from "./routes/salon.router";
+import branchRouter from "./routes/branch.router";
+import staffRouter from "./routes/staff.router";
 
 const app = express();
 dotenv.config();

@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from "express";
-import { AppError } from "./app-error.js";
+import { AppError } from "./app-error";
 
 export const errorMiddleware = (
   err: Error,
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   if (err instanceof AppError) {
     console.log(`Error: ${req.method} ${req.url} - ${err.message}`);

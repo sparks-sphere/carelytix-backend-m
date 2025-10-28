@@ -2,14 +2,14 @@ import { NextFunction, Request, Response } from "express";
 import {
   NotFoundError,
   ValidationError,
-} from "../utils/error-handler/app-error.js";
-import prisma from "../db/prisma.js";
+} from "../utils/error-handler/app-error";
+import prisma from "../db/prisma";
 import {
   createBranchSchema,
   deleteBranchSchema,
   updateBranchSchema,
-} from "../utils/schema.js";
-import { ApiResponse } from "../utils/lib/responce/api-response.js";
+} from "../utils/schema";
+import { ApiResponse } from "../utils/lib/responce/api-response";
 
 export const createBranch = async (
   req: Request,

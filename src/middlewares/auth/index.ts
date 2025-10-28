@@ -1,1 +1,1 @@
-export * from "./isAuthenticated.js";
+export * from "./isAuthenticated";
