@@ -5,10 +5,10 @@
     "target": "ES2020",
 
     // Specifies the module system. "NodeNext" supports both ES modules and CommonJS, matching Node.js behavior.
-    "module": "NodeNext",
+    "module": "commonjs",
 
     // Determines how modules are resolved. "NodeNext" aligns with Node.js's resolution for both ESM and CommonJS.
-    "moduleResolution": "NodeNext",
+    "moduleResolution": "Node",
 
     // Enables all strict type-checking options for safer, more predictable code.
     "strict": true,
