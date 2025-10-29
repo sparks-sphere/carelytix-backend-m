@@ -189,3 +189,48 @@ export const updateServiceSchema = z.object({
     .min(0, { message: "Duration must be at least 0" })
     .optional(),
 });
+
+export const createProductSchema = z.object({
+  productId: z.string().min(1, "Product ID is required"),
+  name: z.string().min(1, "Name is required"),
+  description: z.string().optional(),
+  category: z.string().min(1, "Category is required"),
+  quantity: z.number().int().min(0).optional(),
+  volume: z.string().min(1, "Volume is required"),
+  price: z.string().min(1, "Price is required"),
+  costPrice: z.string().min(1, "Cost price is required"),
+  gst: z.string().min(1, "GST is required"),
+  hsn: z.string().optional(),
+  batchCode: z.string().optional(),
+  manufacturer: z.string().optional(),
+  expiry: z.string().optional(),
+  shelfLifeInDays: z.string().min(1, "Shelf life is required"),
+  triggerNotificationInDays: z
+    .string()
+    .min(1, "Notification trigger days is required"),
+  noOfUses: z.string().min(1, "Number of uses is required"),
+  status: z
+    .enum(["available", "not_available", "discontinued", "draft"])
+    .optional(),
+});
+
+export const updateProductSchema = z.object({
+  name: z.string().min(1).optional(),
+  description: z.string().optional(),
+  category: z.string().min(1).optional(),
+  volume: z.string().min(1).optional(),
+  price: z.string().min(1).optional(),
+  costPrice: z.string().min(1).optional(),
+  gst: z.string().min(1).optional(),
+  hsn: z.string().optional(),
+  batchCode: z.string().optional(),
+  manufacturer: z.string().optional(),
+  expiry: z.string().optional(),
+  shelfLifeInDays: z.string().optional(),
+  triggerNotificationInDays: z.string().optional(),
+  noOfUses: z.string().optional(),
+});
+
+export const updateProductStatusSchema = z.object({
+  status: z.enum(["available", "not_available", "discontinued", "draft"]),
+});

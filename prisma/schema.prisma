@@ -237,19 +237,82 @@ model Booking {
 }
 
 model Product {
-  id              String                  @id @default(uuid())
-  productId       String                  @unique @map("product_id")
-  name            String
-  description     String?
-  price           Decimal
-  manufacturer    String?
-  expiry          DateTime?
-  status          ProductStatus           @default(available)
-  createdAt       DateTime                @default(now()) @map("created_at")
-  updatedAt       DateTime                @updatedAt @map("updated_at")
-  serviceMappings ServiceProductMapping[]
+  id                        String                  @id @default(uuid())
+  productId                 String                  @unique @map("product_id")
+  name                      String
+  description               String?
+  category                  String
+  quantity                  Int                     @default(0)
+  volume                    String
+  price                     Decimal
+  costPrice                 Float
+  gst                       Float
+  hsn                       String?
+  batchCode                 String?
+  manufacturer              String?
+  expiry                    DateTime?
+  shelfLifeInDays           Int
+  triggerNotificationInDays Int
+  noOfUses                  Int
+  status                    ProductStatus           @default(available)
+  createdAt                 DateTime                @default(now()) @map("created_at")
+  updatedAt                 DateTime                @updatedAt @map("updated_at")
+  serviceMappings           ServiceProductMapping[]
+  stockUpdates              StockUpdate[]
+  billItems                 BillItem[]
 
   @@map("product")
+}
+
+model StockUpdate {
+  id             String   @id @default(cuid())
+  dateOfPurchase DateTime
+  productId      String
+  volume         String
+  quantity       Int
+  costPrice      Float
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  product        Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@map("stock_update")
+}
+
+model Bill {
+  id            String     @id @default(cuid())
+  billNumber    String     @unique @map("bill_number")
+  customerName  String?    @map("customer_name")
+  customerPhone String?    @map("customer_phone")
+  customerEmail String?    @map("customer_email")
+  subtotal      Float
+  gstAmount     Float      @map("gst_amount")
+  discount      Float      @default(0)
+  totalAmount   Float      @map("total_amount")
+  paymentMethod String     @map("payment_method")
+  paymentStatus String     @default("PENDING") @map("payment_status")
+  billDate      DateTime   @default(now()) @map("bill_date")
+  createdAt     DateTime   @default(now()) @map("created_at")
+  updatedAt     DateTime   @updatedAt @map("updated_at")
+  billItems     BillItem[]
+
+  @@map("bill")
+}
+
+model BillItem {
+  id        String   @id @default(cuid())
+  billId    String   @map("bill_id")
+  productId String   @map("product_id")
+  quantity  Int
+  volume    String
+  price     Float
+  gst       Float
+  total     Float
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  bill      Bill     @relation(fields: [billId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Restrict)
+
+  @@map("bill_item")
 }
 
 model ServiceProductMapping {
