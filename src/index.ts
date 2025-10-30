@@ -9,6 +9,8 @@ import salonRouter from "./routes/salon.router";
 import branchRouter from "./routes/branch.router";
 import staffRouter from "./routes/staff.router";
 import serviceRouter from "./routes/service.routes";
+import productRouter from "./routes/product.router";
+import stockRouter from "./routes/stock-management.routes";
 
 const app = express();
 dotenv.config();
@@ -50,6 +52,8 @@ app.use("/api/v1/salon", salonRouter);
 app.use("/api/v1/branch", branchRouter);
 app.use("/api/v1/staff", staffRouter);
 app.use("/api/v1/service", serviceRouter);
+app.use("/api/v1/product", productRouter);
+app.use("/api/v1/stock", stockRouter);
 
 // app.use("/api/v1/user");
 // app.use("/api/v1/admin");
