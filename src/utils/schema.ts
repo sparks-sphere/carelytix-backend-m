@@ -234,3 +234,17 @@ export const updateProductSchema = z.object({
 export const updateProductStatusSchema = z.object({
   status: z.enum(["available", "not_available", "discontinued", "draft"]),
 });
+
+export const createStockUpdateSchema = z.object({
+  dateOfPurchase: z.string().min(1, "Date of purchase is required"),
+  volume: z.string().min(1, "Volume is required"),
+  quantity: z.string().min(1, "Quantity is required"),
+  costPrice: z.string().min(1, "Cost price is required"),
+});
+
+export const updateStockUpdateSchema = z.object({
+  dateOfPurchase: z.string().optional(),
+  volume: z.string().optional(),
+  quantity: z.string().optional(),
+  costPrice: z.string().optional(),
+});
