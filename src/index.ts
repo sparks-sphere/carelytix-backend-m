@@ -48,12 +48,12 @@ app.get("/api/v1/health", (req, res) => {
 });
 
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/salon", salonRouter);
-app.use("/api/v1/branch", branchRouter);
-app.use("/api/v1/staff", staffRouter);
-app.use("/api/v1/service", serviceRouter);
-app.use("/api/v1/product", productRouter);
-app.use("/api/v1/stock", stockRouter);
+app.use("/api/v1/user/salon", salonRouter);
+app.use("/api/v1/user/branch", branchRouter);
+app.use("/api/v1/user/staff", staffRouter);
+app.use("/api/v1/user/service", serviceRouter);
+app.use("/api/v1/user/product", productRouter);
+app.use("/api/v1/user/stock", stockRouter);
 
 // app.use("/api/v1/user");
 // app.use("/api/v1/admin");
