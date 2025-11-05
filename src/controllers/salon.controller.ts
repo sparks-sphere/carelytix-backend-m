@@ -25,12 +25,13 @@ export const createSalon = async (
     }
 
     const { name } = result.data;
+
     const existingSalon = await prisma.saloon.findFirst({
-      where: { name, ownerId },
+      where: { ownerId },
     });
 
     if (existingSalon) {
-      return next(new NotFoundError("Salon already exists with this name!"));
+      return next(new NotFoundError("You already have a salon!"));
     }
 
     const salon = await prisma.saloon.create({
@@ -48,7 +49,9 @@ export const createSalon = async (
 
     return res
       .status(201)
-      .json(new ApiResponse(201, salon, "Salon created successfully!"));
+      .json(
+        new ApiResponse(201, { salon, branch }, "Salon created successfully!"),
+      );
   } catch (error) {
     return next(error);
   }
