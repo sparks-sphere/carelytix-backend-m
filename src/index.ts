@@ -55,8 +55,6 @@ app.use("/api/v1/service", serviceRouter);
 app.use("/api/v1/product", productRouter);
 app.use("/api/v1/stock", stockRouter);
 
-// app.use("/api/v1/user");
-// app.use("/api/v1/admin");
 app.use(errorMiddleware);
 
 const port = process.env.PORT || 8080;

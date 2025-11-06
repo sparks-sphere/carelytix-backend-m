@@ -38,12 +38,13 @@ export const createStaff = async (
       );
     }
 
-    const branchHead = await prisma.staff.findFirst({
-      where: { id: req.user?.id, role: "head_of_operation" },
-    });
-    if (!branchHead) {
-      return next(new ValidationError("Only branch head can add staff!"));
-    }
+    // const branchHead = await prisma.staff.findFirst({
+    //   where: { id: req.user?.id, role: "head_of_operation" },
+    // });
+    // console.log(branchHead);
+    // if (!branchHead) {
+    //   return next(new ValidationError("Only branch head can add staff!"));
+    // }
 
     const staff = await prisma.staff.create({
       data: {
@@ -91,7 +92,7 @@ export const getAllStaff = async (
   }
 };
 
-export const getStaffById = (
+export const getStaffById = async (
   req: Request,
   res: Response,
   next: NextFunction,
@@ -99,7 +100,7 @@ export const getStaffById = (
   try {
     const staffId = req.params.id;
 
-    const staff = prisma.staff.findUnique({
+    const staff = await prisma.staff.findUnique({
       where: { id: staffId },
     });
 
