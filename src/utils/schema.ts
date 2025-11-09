@@ -248,3 +248,10 @@ export const updateStockUpdateSchema = z.object({
   quantity: z.string().optional(),
   costPrice: z.string().optional(),
 });
+
+export const createReviewSchema = z.object({
+  rating: z.number().min(1, "Rating is required"),
+  comments: z.string().optional(),
+  customerId: z.string().min(1, "Customer ID is required"),
+  bookingId: z.string().min(1, "Booking ID is required"),
+});

@@ -11,6 +11,7 @@ import staffRouter from "./routes/staff.router";
 import serviceRouter from "./routes/service.routes";
 import productRouter from "./routes/product.router";
 import stockRouter from "./routes/stock-management.routes";
+import reviewRouter from "./routes/review.router";
 
 const app = express();
 dotenv.config();
@@ -54,6 +55,7 @@ app.use("/api/v1/staff", staffRouter);
 app.use("/api/v1/service", serviceRouter);
 app.use("/api/v1/product", productRouter);
 app.use("/api/v1/stock", stockRouter);
+app.use("/api/v1/review", reviewRouter);
 
 app.use(errorMiddleware);
 
