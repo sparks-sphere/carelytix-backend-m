@@ -269,3 +269,10 @@ export const updateSlotSchema = z.object({
   branchId: z.string().min(1, "Branch ID is required"),
   staffId: z.string().min(1, "Staff ID is required").optional(),
 });
+
+export const createCustomerSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  mobile: z.string().min(1, "Contact number is required"),
+  place: z.string().min(1, "Place is required").optional(),
+  email: z.string().email("Invalid email address").optional(),
+});
