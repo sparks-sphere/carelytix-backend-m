@@ -276,3 +276,10 @@ export const createCustomerSchema = z.object({
   place: z.string().min(1, "Place is required").optional(),
   email: z.string().email("Invalid email address").optional(),
 });
+
+export const createBookingSchema = z.object({
+  customerId: z.string().min(1, "Customer ID is required"),
+  serviceId: z.string().min(1, "Service ID is required"),
+  slotId: z.string().min(1, "Slot ID is required"),
+  status: z.enum(["upcoming", "ongoing", "done"]),
+});
