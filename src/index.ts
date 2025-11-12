@@ -12,6 +12,9 @@ import serviceRouter from "./routes/service.routes";
 import productRouter from "./routes/product.router";
 import stockRouter from "./routes/stock-management.routes";
 import reviewRouter from "./routes/review.router";
+import slotRouter from "./routes/slot.router";
+import customerRouter from "./routes/customer.router";
+import bookingRouter from "./routes/booking.router";
 
 const app = express();
 dotenv.config();
@@ -56,6 +59,9 @@ app.use("/api/v1/service", serviceRouter);
 app.use("/api/v1/product", productRouter);
 app.use("/api/v1/stock", stockRouter);
 app.use("/api/v1/review", reviewRouter);
+app.use("/api/v1/slot", slotRouter);
+app.use("/api/v1/customer", customerRouter);
+app.use("/api/v1/booking", bookingRouter);
 
 app.use(errorMiddleware);
 
