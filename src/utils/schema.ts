@@ -255,3 +255,17 @@ export const createReviewSchema = z.object({
   customerId: z.string().min(1, "Customer ID is required"),
   bookingId: z.string().min(1, "Booking ID is required"),
 });
+
+export const createSlotSchema = z.object({
+  slotStart: z.string().min(1, "Slot start is required"),
+  slotEnd: z.string().min(1, "Slot end is required"),
+  branchId: z.string().min(1, "Branch ID is required"),
+  staffId: z.string().min(1, "Staff ID is required").optional(),
+});
+
+export const updateSlotSchema = z.object({
+  slotStart: z.string().optional(),
+  slotEnd: z.string().optional(),
+  branchId: z.string().min(1, "Branch ID is required"),
+  staffId: z.string().min(1, "Staff ID is required").optional(),
+});
