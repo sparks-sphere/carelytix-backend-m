@@ -12,6 +12,7 @@ model User {
   email            String            @unique @map("email_id")
   password         String?
   name             String?
+  role             UserRoles         @default(user)
   primaryContactNo String?           @map("primary_contact_no")
   userMeta         Json?             @map("user_meta")
   isVerified       Boolean           @default(false) @map("is_verified")
@@ -357,6 +358,11 @@ model Member {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("members")
+}
+
+enum UserRoles {
+  admin
+  user
 }
 
 enum BranchType {
