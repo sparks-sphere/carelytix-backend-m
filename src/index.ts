@@ -20,7 +20,12 @@ const app = express();
 dotenv.config();
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://carelytix-frontend.vercel.app"],
+    origin: [
+      "http://localhost:3000",
+      "https://carelytix-frontend.vercel.app",
+      "https://www.carelytix.in",
+      process.env.CLIENT_URL as string,
+    ],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   }),
