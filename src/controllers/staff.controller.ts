@@ -133,19 +133,16 @@ export const updateStaff = async (
 
     const { name, role, contactNumber, address, branchId } = result.data;
 
-    let userId = req.user.id;
+    const userId = req.user?.id;
     if (!userId) {
       return next(new ValidationError("Invalid user id"));
     }
 
-    // Check if the person updating staff is branch head
-    const staff = prisma.staff.findUnique({
-      where: {
-        id: userId,
-        role: "head_of_operation",
-      },
+    // Check if the person updating staff is branch head (by userId)
+    const branchHead = await prisma.staff.findFirst({
+      where: { userId: userId, role: "head_of_operation" },
     });
-    if (!staff) {
+    if (!branchHead) {
       return next(new ValidationError("Only branch head can update staff!"));
     }
 
@@ -196,7 +193,7 @@ export const deleteStaff = async (
       return next(new ValidationError("Invalid staff id"));
     }
 
-    const staff = prisma.staff.findUnique({
+    const staff = await prisma.staff.findUnique({
       where: { id: staffId },
     });
 

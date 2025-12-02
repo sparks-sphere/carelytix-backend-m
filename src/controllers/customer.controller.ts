@@ -1,4 +1,4 @@
-import e, { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { ValidationError } from "../utils/error-handler/app-error";
 import prisma from "../db/prisma";
 import { ApiResponse } from "../utils/lib/responce/api-response";

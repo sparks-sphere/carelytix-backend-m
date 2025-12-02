@@ -176,7 +176,7 @@ export const deleteSalon = async (
     }
 
     await prisma.saloon.delete({
-      where: { id: salonId, ownerId: ownerId },
+      where: { id: salonId },
     });
 
     return res

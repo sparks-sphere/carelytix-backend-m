@@ -96,6 +96,12 @@ export const getAllProducts = async (
     if (!userId) {
       throw new ValidationError("User not authenticated");
     }
+
+    const products = await prisma.product.findMany({
+      where: {},
+    });
+
+    return res.status(200).json(new ApiResponse(200, products, "All products"));
   } catch (error) {
     return next(error);
   }
@@ -112,6 +118,27 @@ export const getProductById = async (
     if (!userId) {
       throw new ValidationError("User not authenticated");
     }
+
+    const productId = req.params.id;
+    if (!productId) {
+      throw new ValidationError("Product id not provided");
+    }
+
+    const product = await prisma.product.findUnique({
+      where: { id: productId },
+      include: {
+        billItems: true,
+        serviceMappings: true,
+      },
+    });
+
+    if (!product) {
+      return next(new NotFoundError("Product not found!"));
+    }
+
+    return res
+      .status(200)
+      .json(new ApiResponse(200, product, "Product fetched successfully!"));
   } catch (error) {
     return next(error);
   }

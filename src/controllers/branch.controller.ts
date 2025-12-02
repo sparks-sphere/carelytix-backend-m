@@ -174,7 +174,7 @@ export const deleteBranch = async (
     }
 
     await prisma.branch.delete({
-      where: { id: branchId, saloonId: saloonId },
+      where: { id: branchId },
     });
 
     return res

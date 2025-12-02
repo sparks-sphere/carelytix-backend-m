@@ -42,10 +42,11 @@ export const createService = async (
       },
     });
 
-    if (branch.saloon.ownerId !== userId || staff?.id !== userId) {
+    // Allow only salon owner OR branch head (by userId) to create service
+    if (branch.saloon.ownerId !== userId && staff?.userId !== userId) {
       return next(
         new ValidationError(
-          "Only the salon owner or branch manager can add staff!",
+          "Only the salon owner or branch head can add services!",
         ),
       );
     }
